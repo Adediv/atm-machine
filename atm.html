@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="atm.css">
+    <link rel="stylesheet" href="/bootstrap-5.1.3-dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="div1 px-3">
+       <div>
+       <button class="btn btn-dark text-light w-100 mt-5" id="withdraw" onclick="withdrawMoney()">Withdraw </button><br>
+        <button class="btn btn-dark text-light w-100 mt-5">Transfer</button><br>
+        <button class="btn btn-dark text-light w-100 mt-5" onclick="deposit()">Deposit</button><br>
+        <button class="btn btn-dark text-light w-100 mt-5" onclick="checkBalance()">checkBalance</button> 
+       </div>
+
+       <div class="div2">
+          <div>
+            <input type="text" placeholder="Enter Amount" id="enterAmount" >
+            <div id="disp"></div>
+          </div>
+       </div>
+
+       <div>
+        <button class="btn btn-dark text-light w-100 mt-5">Disable</button><br>
+        <button class="btn btn-dark text-light w-100 mt-5">Activate</button><br>
+        <button class="btn btn-dark text-light w-100 mt-5">Close Acc</button><br>
+        <button class="btn btn-dark text-light w-100 mt-5">Reset pin</button>
+       </div>
+
+    </div>
+    <script>
+       var balance = 1000
+            function withdrawMoney(){
+                var amountEntered = Number(enterAmount.value)
+                if(amountEntered>balance){
+                    disp.innerText ="Insufficient Fund, pray make sapa go!!"
+                }else if(amountEntered<0){
+                    disp.innerText = "Out of bounds"
+                }else if(amountEntered==""){
+                    disp.innerText="Kindly enter an amount"
+                }else{
+                    balance = balance - amountEntered
+                    disp.innerText = "Withdrawal Successful and your current balance is $" + balance
+                }
+                
+            }
+            function deposit(){
+                var amountEntered = Number(enterAmount.value)
+                if(amountEntered < 0){
+                    disp.innerText="Invalid"
+                }else{
+                    balance = amountEntered + balance
+                    disp.innerText="Deposit Successful and your new balance is $" + balance
+                }
+              
+            }
+            function checkBalance(){
+                disp.innerText = "Your balance is $" + balance  
+
+            }
+    </script>
+</body>
+</html>
